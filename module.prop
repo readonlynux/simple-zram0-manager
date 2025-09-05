@@ -1,0 +1,6 @@
+id=zram0manager
+name=Simplest ZRAM0 Manager
+author=@readonlynux
+version=v.1.0.beta
+versionCode=1
+description=Resizes the ZRAM (/dev/block/zram0) Use this command the su shell: zram0manager [on/off] [byte]
