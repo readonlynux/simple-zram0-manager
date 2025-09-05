@@ -1,1 +1,68 @@
+#!/bin/sh
+MODULEROOT=/data/adb/modules/zram0manager
+statusInput="$1"
+byteInput="$2"
 
+# Swap commands
+sOff() {
+	local offInput="$@"
+	echo 'I: ZRAM0 disabling...'
+	swapoff $offInput 
+	echo 'I: ZRAM0 disabled'
+}
+sResize() {
+	local rInput="$@"
+	echo 'I: ZRAM0 resizing...'
+	echo "1" > /sys/block/zram0/reset
+	echo "$rInput" > /sys/block/zram0/disksize
+	echo 'I: ZRAM0 creating...'
+	mkswap /dev/block/zram0
+	statusCode="$?"
+	if [ "$statusCode" != "0" ]; then
+		echo 'E: Could not recreate the ZRAM0 partition. Enter a larger size and try again.'
+		exit 1
+	fi
+	echo "$rInput" > $MODULEROOT/conf/ZRAM0_size
+	echo 'I: ZRAM0 created'
+}
+sOn() {
+	local onInput="$@"
+	echo 'I: ZRAM0 enabling...'
+	swapon $onInput
+	echo 'I: ZRAM0 enabled'
+}
+
+
+
+rootChecker(){
+	if [ "$(id -u)" != "0" ]; then
+		echo 'E: Please run root privileges.'
+		exit 1
+	fi
+}
+guideHelp() {
+	echo 'Command Usage: zram0manager [on/off] [byte]'
+	echo 'For example;'
+	echo 'zram0manager on 2000000000 (2 GB)'
+}
+resizer() {
+	if [ -z "$byteInput" ]; then
+		guideHelp
+		exit 1
+	fi
+	sOff /dev/block/zram0
+	sResize "$byteInput"
+	sOn /dev/block/zram0
+}
+statusController() {
+	if [ "$statusInput" = "on" ]; then
+		resizer
+	elif [ "$statusInput" = "off" ]; then
+		sOff /dev/block/zram0
+	else
+		guideHelp
+	fi
+
+}
+rootChecker
+statusController
