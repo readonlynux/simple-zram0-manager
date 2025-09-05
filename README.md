@@ -3,6 +3,7 @@
 
 **Magisk Module** to easily manage ZRAM0 swap on Android devices. Allows enabling, disabling, and resizing ZRAM0 with root access, both at startup and runtime.
 
+> ⛔ I take no responsibility for any issues
 
 > ⚠️ **ONLY TESTED** Redmi Note 12 4G!
 
@@ -40,7 +41,7 @@
 1. Download the latest release from the [Releases](https://github.com/readonlynux/simple-zram0-manager/releases/latest) page.
 2. Install the downloaded ZIP file via the Magisk app.
 3. Reboot your device.
-4. Use the included script via a terminal emulator (e.g., [Termux](https://termux.dev/):
+4. Use the included script via a terminal emulator (e.g., [Termux](https://termux.dev/)):
 
    ```sh
    su # grant root access first
