@@ -4,12 +4,18 @@
 **Magisk Module** to easily manage ZRAM0 swap on Android devices. Allows enabling, disabling, and resizing ZRAM0 with root access, both at startup and runtime.
 
 > ⛔ I take no responsibility for any issues
+<br>
 
 > ⚠️ **ONLY TESTED**
+> 
 > **Device:** Redmi Note 12 4G
+> 
 > **Root Manager:** Magisk Manager
+> 
 > **Root Manager Version:** 29000
+> 
 > ⛔ NOT TESTED
+> 
 > With **KernelSU**
 
 
