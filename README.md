@@ -18,7 +18,7 @@
 - Disable ZRAM0
 - Resize ZRAM0 swap
 - Lightweight and simple
-- Designed for Android devices with root/Magisk
+- Designed for Android devices with Magisk
 
 
 ---
