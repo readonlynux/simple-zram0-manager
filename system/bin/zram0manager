@@ -7,7 +7,8 @@ byteInput="$2"
 sOff() {
 	local offInput="$@"
 	echo 'I: ZRAM0 disabling...'
-	swapoff $offInput 
+	swapoff $offInput
+    echo "1" > /sys/block/zram0/reset
 	echo 'I: ZRAM0 disabled'
 }
 sResize() {
