@@ -1,7 +1,7 @@
-# 🔹 Simple ZRAM0 Manager
+# 🔹 Simple ZRAM0 Resizer
 
 
-**Magisk Module** to easily manage ZRAM0 swap on Android devices. Allows enabling, disabling, and resizing ZRAM0 with root access, both at startup and runtime.
+**Magisk Module** to easily resize ZRAM0 swap on Android devices. Allows resizing ZRAM0 with root access, both at startup and runtime.
 
 > ⛔ I take no responsibility for any issues
 <br>
@@ -14,9 +14,9 @@
 > 
 > **Root Manager Version:** 29000
 > 
-> ⛔ NOT TESTED
+> ⛔ NOT SUPPORTED
 > 
-> With **KernelSU**
+> Doesn't supported **KSU (KernelSU)**
 
 
 ---
@@ -56,11 +56,7 @@
    su # first, grant root access
    ```
    ```sh
-   zram0manager on 2000000000 # Enables 2GB ZRAM
-   ```
-   or
-   ```sh
-   zram0manager off # Disables ZRAM0
+   zram0resize 2000000000 # Enables 2GB ZRAM
    ```
 
 
